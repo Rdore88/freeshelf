@@ -1,8 +1,10 @@
 class BooksController < ApplicationController
-  before_action :find_book, only: [:show, :destroy, :update]
+  before_action :find_book, only: [:show, :destroy, :update, :edit]
 
   def index
     @books = Book.all
+    # How to render up to the front end
+    # render json: @books
   end
 
   def new
@@ -27,8 +29,13 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def edit
+    @book
+  end
+
   def update
-    @book.update
+    @book.update(book_params)
+    redirect_to books_path
   end
 
 

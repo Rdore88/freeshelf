@@ -6,9 +6,8 @@
 <% @books.each do |book|%>
   <%= book.title %>
   <%= book.author %>
-  <%= book.description %>
-  <%= book.url %>
   <%= link_to "Show", book %>
   <%= link_to "Edit", edit_book_path(book) %>
   <%= link_to "Destroy", book, method: :delete %>
+  <br>
 <% end %>
