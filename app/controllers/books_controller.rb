@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :find_book, only: [:show, :destroy, :update, :edit]
+  before_action :authorize!, except: [:index, :show]
 
   def index
     @books = Book.all
@@ -13,6 +14,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
     if @book.save
       redirect_to books_path
     else

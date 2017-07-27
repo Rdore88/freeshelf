@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <% if current_user %>
+    <%= link_to "Logout", sessions_path %>
+    <%= link_to "Profile", current_user %>
+
+    <% else %>
+    <%= link_to "Login", new_session_path %>
+    <%= link_to "Create New User", new_user_path %>
+    <% end %>
+    <%= link_to "Home", books_path %>
     <%= yield %>
   </body>
 </html>
